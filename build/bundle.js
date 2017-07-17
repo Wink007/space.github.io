@@ -22430,7 +22430,7 @@
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _templateObject = _taggedTemplateLiteral(['\n  display: flex;\n  height: 100%;\n  flex-direction: row;\n  justify-content: center;\n  box-sizing: border-box;\n\n'], ['\n  display: flex;\n  height: 100%;\n  flex-direction: row;\n  justify-content: center;\n  box-sizing: border-box;\n\n']);
+	var _templateObject = _taggedTemplateLiteral(['\n  display: flex;\n  height: 100%;\n  flex-direction: row;\n  justify-content: center;\n'], ['\n  display: flex;\n  height: 100%;\n  flex-direction: row;\n  justify-content: center;\n']);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -22540,11 +22540,6 @@
 	        showPlanet: _extends({}, this.state.system[planetId]),
 	        sidebarOpen: true
 	      });
-	    }
-	  }, {
-	    key: 'onClick',
-	    value: function onClick() {
-	      this.choosePlanet(1);
 	    }
 	  }, {
 	    key: 'closeSideBar',
@@ -46821,11 +46816,6 @@
 	      this.changePos();
 	    }
 	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      clearInterval(this.state.intervalId);
-	    }
-	  }, {
 	    key: 'onClick',
 	    value: function onClick() {
 	      this.props.cb(3);
@@ -46942,11 +46932,6 @@
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      this.changePos();
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      clearInterval(this.state.intervalId);
 	    }
 	  }, {
 	    key: 'onClick',
@@ -47071,11 +47056,6 @@
 	      this.changePos();
 	    }
 	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      clearInterval(this.state.intervalId);
-	    }
-	  }, {
 	    key: 'onClick',
 	    value: function onClick() {
 	      this.props.cb(5);
@@ -47157,33 +47137,28 @@
 	var Mars = (function (_React$Component) {
 	  _inherits(Mars, _React$Component);
 
-	  function Mars(props) {
+	  function Mars() {
 	    _classCallCheck(this, Mars);
 
-	    _get(Object.getPrototypeOf(Mars.prototype), 'constructor', this).call(this, props);
-	    this.state = {
-	      top: 20,
-	      left: 90
-	    };
-
-	    this.changePos = this.changePos.bind(this);
+	    _get(Object.getPrototypeOf(Mars.prototype), 'constructor', this).apply(this, arguments);
 	  }
 
 	  _createClass(Mars, [{
 	    key: 'startAnim',
 	    value: function startAnim(t) {
 	      var radius = 50;
-
 	      var alpha = 0;
 	      var angle = 2 * Math.PI / (1.88 * this.props.earthPeriod);
+	      var left = this.props.left;
+	      var top = this.props.top;
 
 	      alpha += angle;
-	      this.state.left = 48 + radius * Math.cos(alpha * t);
-	      this.state.top = 48 + radius * Math.sin(-alpha * t);
+	      left = 48 + radius * Math.cos(alpha * t);
+	      top = 48 + radius * Math.sin(-alpha * t);
 
 	      this.setState({
-	        top: this.state.top,
-	        left: this.state.left
+	        top: top,
+	        left: left
 	      });
 	    }
 	  }, {
@@ -47201,15 +47176,6 @@
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      this.changePos();
-	      this.setState({
-	        top: this.state.top,
-	        left: this.state.left
-	      });
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      clearInterval(this.state.intervalId);
 	    }
 	  }, {
 	    key: 'onClick',
@@ -47446,11 +47412,6 @@
 	      this.changePos();
 	    }
 	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      clearInterval(this.state.intervalId);
-	    }
-	  }, {
 	    key: 'onClick',
 	    value: function onClick() {
 	      this.props.cb(8);
@@ -47567,11 +47528,6 @@
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      this.changePos();
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      clearInterval(this.state.intervalId);
 	    }
 	  }, {
 	    key: 'onClick',
@@ -47694,11 +47650,6 @@
 	      this.changePos();
 	    }
 	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      clearInterval(this.state.intervalId);
-	    }
-	  }, {
 	    key: 'onClick',
 	    value: function onClick() {
 	      this.props.cb(10);
@@ -47816,11 +47767,6 @@
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      this.changePos();
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      clearInterval(this.state.intervalId);
 	    }
 	  }, {
 	    key: 'onClick',
@@ -47941,11 +47887,6 @@
 	      this.changePos();
 	    }
 	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      clearInterval(this.state.intervalId);
-	    }
-	  }, {
 	    key: 'onClick',
 	    value: function onClick() {
 	      this.props.cb(12);
@@ -47985,7 +47926,7 @@
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _templateObject = _taggedTemplateLiteral(['\n  display: inline-block;\n  position: relative;\n  white-space: nowrap;\n  color: #B00D22;\n  > h2 {\n    float: left;\n    font-family: \'Lora\', serif;\n    font-weight: 300;\n    margin-right: 2%;\n    border-bottom: 2px solid;\n    width: 100%;\n  }\n  > i {\n    cursor: pointer;\n    position: absolute;\n    top: 30%;\n    right: 0;\n  }\n  &:after {\n    clear: both;\n  }\n  @media screen and (max-device-width: 500px) {\n    font-size: 40px;\n  }\n'], ['\n  display: inline-block;\n  position: relative;\n  white-space: nowrap;\n  color: #B00D22;\n  > h2 {\n    float: left;\n    font-family: \'Lora\', serif;\n    font-weight: 300;\n    margin-right: 2%;\n    border-bottom: 2px solid;\n    width: 100%;\n  }\n  > i {\n    cursor: pointer;\n    position: absolute;\n    top: 30%;\n    right: 0;\n  }\n  &:after {\n    clear: both;\n  }\n  @media screen and (max-device-width: 500px) {\n    font-size: 40px;\n  }\n']);
+	var _templateObject = _taggedTemplateLiteral(['\n  display: inline-block;\n  z-index: 3;\n  position: relative;\n  white-space: nowrap;\n  color: #B00D22;\n  > h2 {\n    float: left;\n    font-family: \'Lora\', serif;\n    font-weight: 300;\n    margin-right: 2%;\n    border-bottom: 2px solid;\n    width: 100%;\n  }\n  > i {\n    cursor: pointer;\n    position: absolute;\n    top: 30%;\n    right: 0;\n  }\n\n  @media screen and (max-device-width: 500px) {\n    font-size: 40px;\n  }\n'], ['\n  display: inline-block;\n  z-index: 3;\n  position: relative;\n  white-space: nowrap;\n  color: #B00D22;\n  > h2 {\n    float: left;\n    font-family: \'Lora\', serif;\n    font-weight: 300;\n    margin-right: 2%;\n    border-bottom: 2px solid;\n    width: 100%;\n  }\n  > i {\n    cursor: pointer;\n    position: absolute;\n    top: 30%;\n    right: 0;\n  }\n\n  @media screen and (max-device-width: 500px) {\n    font-size: 40px;\n  }\n']);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -47999,8 +47940,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactBootstrap = __webpack_require__(227);
-
 	var _styledComponents = __webpack_require__(187);
 
 	var _styledComponents2 = _interopRequireDefault(_styledComponents);
@@ -48008,15 +47947,6 @@
 	__webpack_require__(492);
 
 	var SideBarHeader = _styledComponents2['default'].div(_templateObject);
-	var tooltip = _react2['default'].createElement(
-	  _reactBootstrap.Tooltip,
-	  { id: 'tooltip' },
-	  _react2['default'].createElement(
-	    'strong',
-	    null,
-	    'Закрыть'
-	  )
-	);
 
 	var SlideBar = (function (_React$Component) {
 	  _inherits(SlideBar, _React$Component);
@@ -48040,23 +47970,19 @@
 	      var image = planet.image;
 	      var text = planet.text;
 
-	      var sidebarClass = isOpen ? 'sidebar style-1 open' : 'sidebar style-1';
+	      var sidebarClass = isOpen ? 'sidebar open' : 'sidebar';
 	      return _react2['default'].createElement(
 	        'div',
 	        { className: sidebarClass },
 	        _react2['default'].createElement(
-	          _reactBootstrap.OverlayTrigger,
-	          { placement: 'right', overlay: tooltip },
+	          SideBarHeader,
+	          null,
 	          _react2['default'].createElement(
-	            SideBarHeader,
+	            'h2',
 	            null,
-	            _react2['default'].createElement(
-	              'h2',
-	              null,
-	              headName
-	            ),
-	            _react2['default'].createElement('i', { className: 'glyphicon glyphicon-remove', onClick: close })
-	          )
+	            headName
+	          ),
+	          _react2['default'].createElement('i', { className: 'glyphicon glyphicon-remove', onClick: close })
 	        ),
 	        _react2['default'].createElement(
 	          'p',
@@ -48109,7 +48035,7 @@
 
 
 	// module
-	exports.push([module.id, ".sidebar {\n  overflow: hidden;\n  display: none;\n  width: 35%;\n  color: rgba(255,255,255, 0.5);\n  transition: left .3s ease-in-out;\n  background: url(http://spacedock.ru/forum/uploads/attachment/2013-09/1379076508_astrowalls02.jpg) no-repeat 0 0;\n  background-size: cover;\n  overflow: auto;\n  margin:0 1%;\n  padding: 0 .8%;\n}\n.sidebar.open {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-animation: sidebar_anim .6s linear;\n          animation: sidebar_anim .6s linear;\n  -webkit-animation-fill-mode: forwards;\n          animation-fill-mode: forwards;\n}\n@-webkit-keyframes sidebar_anim{\n  0% {\n    opacity: 0;\n  }\n  50% {\n    opacity: 0.5;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n@keyframes sidebar_anim{\n  0% {\n    opacity: 0;\n  }\n  50% {\n    opacity: 0.5;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n.sidebar > h2 {\n  font-family: 'Lora', serif;\n  color: #B00D22;\n  font-weight: 300;\n  margin-right: 2%;\n  border-bottom: 2px solid;\n}\n.sidebar > p {\n  font-family: arial;\n  color: #785F5B;\n  line-height: 1.3;\n  text-align: justify;\n}\n.sidebar.hideText {\n  display: none;\n}\n\n.leftimg {\n  float: left;\n  margin: 0 1em 1em 0;\n  width: 190px;\n  height: 160px;\n}\n.style-1::-webkit-scrollbar {\n  display: none;\n}\n@media screen and (max-device-width: 500px) {\n  .sidebar {\n    position: absolute;\n    height: 100%;\n    width: 94%;\n    margin: 10% auto;\n    overflow: auto;\n\n    height: 85%;\n    z-index: 2;\n    overflow-y: scroll;\n    -webkit-overflow-scrolling: touch;\n}\n  h2 {\n    font-size: 60px;\n    border-bottom: 4px solid !important;\n    font-weight: 900 !important;\n    font-family: cursive !important;\n    text-align: center;\n    padding-bottom: 2%;\n  }\n  .sidebar > p {\n    font-size: 35px;\n  }\n  .leftimg {\n    float: left;\n    margin: 0 1em 1em 0;\n    width: 440px;\n    height: 400px;\n  }\n}\n", ""]);
+	exports.push([module.id, ".sidebar {\n  display: none;\n\n}\n.sidebar.open {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  width: 35%;\n  color: rgba(255,255,255, 0.5);\n  transition: left .3s ease-in-out;\n  background: url(http://spacedock.ru/forum/uploads/attachment/2013-09/1379076508_astrowalls02.jpg) no-repeat 0 0;\n  background-size: cover;\n  margin:0 1%;\n  padding: 0 .8%;\n  -webkit-animation: sidebar_anim .6s linear;\n          animation: sidebar_anim .6s linear;\n  -webkit-animation-fill-mode: forwards;\n          animation-fill-mode: forwards;\n}\n@-webkit-keyframes sidebar_anim{\n  0% {\n    opacity: 0;\n  }\n  50% {\n    opacity: 0.5;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n@keyframes sidebar_anim{\n  0% {\n    opacity: 0;\n  }\n  50% {\n    opacity: 0.5;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n.sidebar > h2 {\n  font-family: 'Lora', serif;\n  color: #B00D22;\n  font-weight: 300;\n  margin-right: 2%;\n  border-bottom: 2px solid;\n}\n.sidebar > p {\n  font-family: arial;\n  color: #785F5B;\n  line-height: 1.3;\n  text-align: justify;\n  overflow: auto;\n}\n.sidebar.hideText {\n  display: none;\n}\n\n.leftimg {\n  float: left;\n  margin: 0 1em 1em 0;\n  width: 190px;\n  height: 160px;\n}\n.sidebar > p::-webkit-scrollbar {\n  display: none;\n}\n@media screen and (max-device-width: 500px) {\n  .sidebar.open {\n    position: absolute;\n    height: 100%;\n    width: 94%;\n    margin: 10% auto;\n    height: 85%;\n    z-index: 3;\n  }\n  h2 {\n    font-size: 60px;\n    border-bottom: 4px solid !important;\n    font-weight: 900 !important;\n    font-family: cursive !important;\n    text-align: center;\n    padding-bottom: 2%;\n  }\n  .sidebar > p {\n    font-size: 35px;\n  }\n  .leftimg {\n    float: left;\n    margin: 0 1em 1em 0;\n    width: 440px;\n    height: 400px;\n  }\n}\n", ""]);
 
 	// exports
 
