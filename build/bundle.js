@@ -22547,6 +22547,7 @@
 	      this.setState({
 	        sidebarOpen: false
 	      });
+	      console.log(window.outerWidth);
 	    }
 	  }, {
 	    key: 'render',
@@ -22563,7 +22564,7 @@
 	        }),
 	        _react2['default'].createElement(
 	          _SollarSystemJs2['default'],
-	          null,
+	          { isOpen: this.state.sidebarOpen },
 	          _react2['default'].createElement(_PlutoJs2['default'], {
 	            earthPeriod: earthPeriod,
 	            cb: this.choosePlanet,
@@ -26996,9 +26997,11 @@
 	  _createClass(SollarSystem, [{
 	    key: 'render',
 	    value: function render() {
+	      var isOpen = this.props.isOpen;
+
 	      return _react2['default'].createElement(
 	        SollarSystemStyle,
-	        null,
+	        { style: window.outerWidth <= 500 && isOpen ? { opacity: 0 } : { opacity: 1 } },
 	        this.props.children
 	      );
 	    }
@@ -28300,7 +28303,7 @@
 
 
 	// module
-	exports.push([module.id, ".sidebar {\n  display: none;\n\n}\n.sidebar.open {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  width: 35%;\n  color: rgba(255,255,255, 0.5);\n  transition: left .3s ease-in-out;\n  background: url(http://spacedock.ru/forum/uploads/attachment/2013-09/1379076508_astrowalls02.jpg) no-repeat 0 0;\n  background-size: cover;\n  margin:0 1%;\n  padding: 0 .8%;\n  -webkit-animation: sidebar_anim .6s linear;\n          animation: sidebar_anim .6s linear;\n  -webkit-animation-fill-mode: forwards;\n          animation-fill-mode: forwards;\n}\n@-webkit-keyframes sidebar_anim{\n  0% {\n    opacity: 0;\n  }\n  50% {\n    opacity: 0.5;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n@keyframes sidebar_anim{\n  0% {\n    opacity: 0;\n  }\n  50% {\n    opacity: 0.5;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n.sidebar > h2 {\n  font-family: 'Lora', serif;\n  color: #B00D22;\n  font-weight: 300;\n  margin-right: 2%;\n  border-bottom: 2px solid;\n}\n.sidebar > p {\n  font-family: arial;\n  color: #785F5B;\n  line-height: 1.3;\n  text-align: justify;\n  overflow: auto;\n}\n.sidebar.hideText {\n  display: none;\n}\n\n.leftimg {\n  float: left;\n  margin: 0 1em 1em 0;\n  width: 190px;\n  height: 160px;\n}\n.sidebar > p::-webkit-scrollbar {\n  display: none;\n}\n@media screen and (max-device-width: 500px) {\n  .sidebar.open {\n    position: absolute;\n    height: 100%;\n    width: 94%;\n    margin: 10% auto;\n    height: 85%;\n    z-index: 3;\n  }\n  h2 {\n    font-size: 60px;\n    border-bottom: 4px solid !important;\n    font-weight: 900 !important;\n    font-family: cursive !important;\n    text-align: center;\n    padding-bottom: 2%;\n    z-index: 10;\n  }\n  .sidebar > p {\n    font-size: 35px;\n  }\n  .leftimg {\n    float: left;\n    margin: 0 1em 1em 0;\n    width: 440px;\n    height: 400px;\n  }\n}\n", ""]);
+	exports.push([module.id, ".sidebar {\n  display: none;\n\n}\n.sidebar.open {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  width: 35%;\n  color: rgba(255,255,255, 0.5);\n  transition: left .3s ease-in-out;\n  background: url(http://spacedock.ru/forum/uploads/attachment/2013-09/1379076508_astrowalls02.jpg) no-repeat 0 0;\n  background-size: cover;\n  margin:0 1%;\n  padding: 0 .8%;\n  -webkit-animation: sidebar_anim .6s linear;\n          animation: sidebar_anim .6s linear;\n  -webkit-animation-fill-mode: forwards;\n          animation-fill-mode: forwards;\n}\n@-webkit-keyframes sidebar_anim{\n  0% {\n    opacity: 0;\n  }\n  50% {\n    opacity: 0.5;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n@keyframes sidebar_anim{\n  0% {\n    opacity: 0;\n  }\n  50% {\n    opacity: 0.5;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n.sidebar > h2 {\n  font-family: 'Lora', serif;\n  color: #B00D22;\n  font-weight: 300;\n  margin-right: 2%;\n  border-bottom: 2px solid;\n}\n.sidebar > p {\n  font-family: arial;\n  color: #785F5B;\n  line-height: 1.3;\n  text-align: justify;\n  overflow: auto;\n}\n.sidebar.hideText {\n  display: none;\n}\n\n.leftimg {\n  float: left;\n  margin: 0 1em 1em 0;\n  width: 190px;\n  height: 160px;\n}\n.sidebar > p::-webkit-scrollbar {\n  display: none;\n}\n@media screen and (max-device-width: 500px) {\n  .sidebar.open {\n    position: absolute;\n    height: 100%;\n    width: 94%;\n    margin: 2% auto;\n    height: 85%;\n    z-index: 10;\n  }\n  h2 {\n    font-size: 60px;\n    border-bottom: 4px solid !important;\n    font-weight: 900 !important;\n    font-family: cursive !important;\n    text-align: center;\n    padding-bottom: 2%;\n    z-index: 10;\n  }\n  .sidebar > p {\n    font-size: 35px;\n  }\n  .leftimg {\n    float: left;\n    margin: 0 1em 1em 0;\n    width: 440px;\n    height: 400px;\n  }\n}\n", ""]);
 
 	// exports
 
