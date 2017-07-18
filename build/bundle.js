@@ -22547,7 +22547,6 @@
 	      this.setState({
 	        sidebarOpen: false
 	      });
-	      console.log(window.outerWidth);
 	    }
 	  }, {
 	    key: 'render',
@@ -27001,8 +27000,8 @@
 
 	      return _react2['default'].createElement(
 	        SollarSystemStyle,
-	        { style: window.outerWidth <= 500 && isOpen ? { display: 'none' } : { display: 'flex' } },
-	        this.props.children
+	        null,
+	        window.outerWidth <= 500 && isOpen ? null : this.props.children
 	      );
 	    }
 	  }]);
@@ -27195,6 +27194,11 @@
 	      this.changePos();
 	    }
 	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      clearInterval(this.state.intervalId);
+	    }
+	  }, {
 	    key: 'onClick',
 	    value: function onClick() {
 	      this.props.cb(3);
@@ -27299,6 +27303,11 @@
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      this.changePos();
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      clearInterval(this.state.intervalId);
 	    }
 	  }, {
 	    key: 'onClick',
@@ -27411,6 +27420,11 @@
 	      this.changePos();
 	    }
 	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      clearInterval(this.state.intervalId);
+	    }
+	  }, {
 	    key: 'onClick',
 	    value: function onClick() {
 	      this.props.cb(5);
@@ -27519,6 +27533,11 @@
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      this.changePos();
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      clearInterval(this.state.intervalId);
 	    }
 	  }, {
 	    key: 'onClick',
@@ -27731,6 +27750,11 @@
 	      this.changePos();
 	    }
 	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      clearInterval(this.state.intervalId);
+	    }
+	  }, {
 	    key: 'onClick',
 	    value: function onClick() {
 	      this.props.cb(8);
@@ -27835,6 +27859,11 @@
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      this.changePos();
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      clearInterval(this.state.intervalId);
 	    }
 	  }, {
 	    key: 'onClick',
@@ -27945,6 +27974,11 @@
 	      this.changePos();
 	    }
 	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      clearInterval(this.state.intervalId);
+	    }
+	  }, {
 	    key: 'onClick',
 	    value: function onClick() {
 	      this.props.cb(10);
@@ -28052,6 +28086,11 @@
 	      this.changePos();
 	    }
 	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      clearInterval(this.state.intervalId);
+	    }
+	  }, {
 	    key: 'onClick',
 	    value: function onClick() {
 	      this.props.cb(11);
@@ -28156,6 +28195,11 @@
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      this.changePos();
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      clearInterval(this.state.intervalId);
 	    }
 	  }, {
 	    key: 'onClick',
