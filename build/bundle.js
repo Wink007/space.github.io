@@ -27001,7 +27001,7 @@
 
 	      return _react2['default'].createElement(
 	        SollarSystemStyle,
-	        { style: window.outerWidth <= 500 && isOpen ? { opacity: 0 } : { opacity: 1 } },
+	        { style: window.outerWidth <= 500 && isOpen ? { display: 'none' } : { display: 'flex' } },
 	        this.props.children
 	      );
 	    }
