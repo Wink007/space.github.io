@@ -22594,7 +22594,6 @@
 	            top: this.state.top,
 	            left: this.state.left
 	          }),
-	          _react2['default'].createElement(_AsteroidsJs2['default'], { cb: this.choosePlanet }),
 	          _react2['default'].createElement(_MarsJs2['default'], {
 	            earthPeriod: earthPeriod,
 	            cb: this.choosePlanet,
@@ -27026,7 +27025,7 @@
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _templateObject = _taggedTemplateLiteral(['\n  animation: rays_anim 10s linear infinite;\n  background-color:#FFFF66;\n  position: absolute;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width:50px;\n  height:50px;\n  border-radius:50%;\n  opacity:0.9;\n  ', '\n  &:hover .tooltip {\n    top: -60%;\n    left: -15%;\n  }\n  @keyframes rays_anim {\n    0% { box-shadow: 0px 0px 20px 15px #FFFF66;}\n    25% { box-shadow: 0px 0px 50px 15px #FFFF66;}\n    50% { box-shadow: 0px 0px 90px 15px #FFFF66;}\n    75% { box-shadow: 0px 0px 50px 15px #FFFF66;}\n    100% { box-shadow: 0px 0px 20px 15px #FFFF66;}\n  }\n  @media screen and (max-device-width: 500px) {\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  animation: rays_anim 10s linear infinite;\n  background-color:#FFFF66;\n  position: absolute;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width:50px;\n  height:50px;\n  border-radius:50%;\n  opacity:0.9;\n  ', '\n  &:hover .tooltip {\n    top: -60%;\n    left: -15%;\n  }\n  @keyframes rays_anim {\n    0% { box-shadow: 0px 0px 20px 15px #FFFF66;}\n    25% { box-shadow: 0px 0px 50px 15px #FFFF66;}\n    50% { box-shadow: 0px 0px 90px 15px #FFFF66;}\n    75% { box-shadow: 0px 0px 50px 15px #FFFF66;}\n    100% { box-shadow: 0px 0px 20px 15px #FFFF66;}\n  }\n  @media screen and (max-device-width: 500px) {\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']);
+	var _templateObject = _taggedTemplateLiteral(['\n  animation: rays_anim 10s linear infinite;\n  background-color:#FFFF66;\n  position: absolute;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width:50px;\n  height:50px;\n  border-radius:50%;\n  opacity:0.9;\n  ', ';\n  @keyframes rays_anim {\n    0% { box-shadow: 0px 0px 20px 15px #FFFF66;}\n    25% { box-shadow: 0px 0px 50px 15px #FFFF66;}\n    50% { box-shadow: 0px 0px 90px 15px #FFFF66;}\n    75% { box-shadow: 0px 0px 50px 15px #FFFF66;}\n    100% { box-shadow: 0px 0px 20px 15px #FFFF66;}\n  }\n  @media screen and (max-device-width: 500px) {\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  animation: rays_anim 10s linear infinite;\n  background-color:#FFFF66;\n  position: absolute;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width:50px;\n  height:50px;\n  border-radius:50%;\n  opacity:0.9;\n  ', ';\n  @keyframes rays_anim {\n    0% { box-shadow: 0px 0px 20px 15px #FFFF66;}\n    25% { box-shadow: 0px 0px 50px 15px #FFFF66;}\n    50% { box-shadow: 0px 0px 90px 15px #FFFF66;}\n    75% { box-shadow: 0px 0px 50px 15px #FFFF66;}\n    100% { box-shadow: 0px 0px 20px 15px #FFFF66;}\n  }\n  @media screen and (max-device-width: 500px) {\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -27048,15 +27047,21 @@
 
 	var _TooltipJs2 = _interopRequireDefault(_TooltipJs);
 
-	var SunStyle = _styledComponents2['default'].div(_templateObject, _TooltipJs.tooltipStyle);
+	var SunStyle = _styledComponents2['default'].div(_templateObject, function (props) {
+	  return (0, _TooltipJs.tooltipStyle)(props.toolPos);
+	});
 
 	var Sun = (function (_React$Component) {
 	  _inherits(Sun, _React$Component);
 
-	  function Sun() {
+	  function Sun(props) {
 	    _classCallCheck(this, Sun);
 
-	    _get(Object.getPrototypeOf(Sun.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Sun.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {
+	      tooltipPos: { top: 2, left: 10 }
+	    };
 	  }
 
 	  _createClass(Sun, [{
@@ -27067,9 +27072,27 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this = this;
+
 	      return _react2['default'].createElement(
 	        SunStyle,
-	        { onClick: this.onClick.bind(this) },
+	        {
+	          onClick: this.onClick.bind(this),
+	          onMouseOver: function (e) {
+	            var offsetTop = 40;
+	            var offsetLeft = 0;
+
+	            var _e$target$getBoundingClientRect = e.target.getBoundingClientRect();
+
+	            var top = _e$target$getBoundingClientRect.top;
+	            var left = _e$target$getBoundingClientRect.left;
+
+	            _this.setState({
+	              tooltipPos: { left: e.clientX - left + offsetLeft, top: e.clientY - top - offsetTop }
+	            });
+	          },
+	          toolPos: this.state.tooltipPos
+	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Солнце' })
 	      );
 	    }
@@ -27085,30 +27108,34 @@
 /* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
-	Object.defineProperty(exports, '__esModule', {
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var tooltipStyle = '\n  &:hover .tooltip {\n    opacity: .8;\n    display: block;\n    top: 0;\n    left: 0;\n    border-radius: 5px;\n    width: 65px;\n    height: auto;\n    padding: 3px 0;\n    line-height: 1;\n    text-align: center;\n    background-color: rgba(244,214,214, 0.2);\n    color: #fff;\n    font-weight: bold;\n    box-shadow: 0px 0px 10px 1px rgba(244,214,214, 0.5);\n  }\n';
+	var tooltipStyle = function tooltipStyle() {
+	  var tooltipPos = arguments.length <= 0 || arguments[0] === undefined ? { top: 2, left: 10 } : arguments[0];
+	  return "\n  &:hover .tooltip {\n    opacity: .8;\n    display: block;\n    top: " + tooltipPos.top + "px;\n    left: " + tooltipPos.left + "px;\n    content: attr(title);\n    border-radius: 5px;\n    width: 65px;\n    height: auto;\n    padding: 5px 0;\n    line-height: 1;\n    text-align: center;\n    background: #211E1E;\n    color: #fff;\n    font-weight: bold;\n\n    &:before {\n      content: '';\n      border: solid;\n      border-color: #211E1E transparent;\n      border-width: 22px 4px 0 7px;\n      content: \"\";\n      left: 3%;\n      top: 96%;\n      position: absolute;\n    }\n  }\n";
+	};
 
 	exports.tooltipStyle = tooltipStyle;
 	var Tooltip = function Tooltip(props) {
-	  return _react2['default'].createElement(
-	    'div',
-	    { className: 'tooltip' },
-	    props.text || 'asdasdasd'
+	  return _react2["default"].createElement(
+	    "div",
+	    { className: "tooltip" },
+	    props.text,
+	    _react2["default"].createElement("div", null)
 	  );
 	};
 
-	exports['default'] = Tooltip;
+	exports["default"] = Tooltip;
 
 /***/ }),
 /* 228 */
@@ -27124,7 +27151,7 @@
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 130px;\n  height: 130px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  ', '\n  &:hover .tooltip {\n    top: -18%;\n    left: 22%;\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 130px;\n  height: 130px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  ', '\n  &:hover .tooltip {\n    top: -18%;\n    left: 22%;\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
+	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 130px;\n  height: 130px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  ', ';\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 130px;\n  height: 130px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  ', ';\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n  }\n']),
 	    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  background-color: #7A3E01;\n  width:10px;\n  height:10px;\n  top: 77%;\n  left: 7%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #A15E1A;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 20px;\n    height: 20px;\n  }\n'], ['\n  position: absolute;\n  background-color: #7A3E01;\n  width:10px;\n  height:10px;\n  top: 77%;\n  left: 7%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #A15E1A;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 20px;\n    height: 20px;\n  }\n']);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -27147,16 +27174,22 @@
 
 	var _TooltipJs2 = _interopRequireDefault(_TooltipJs);
 
-	var RoundStyle = _styledComponents2['default'].div(_templateObject, _TooltipJs.tooltipStyle);
+	var RoundStyle = _styledComponents2['default'].div(_templateObject, function (props) {
+	  return (0, _TooltipJs.tooltipStyle)(props.toolPos);
+	});
 	var MercuryStyle = _styledComponents2['default'].div(_templateObject2);
 
 	var Mercury = (function (_React$Component) {
 	  _inherits(Mercury, _React$Component);
 
-	  function Mercury() {
+	  function Mercury(props) {
 	    _classCallCheck(this, Mercury);
 
-	    _get(Object.getPrototypeOf(Mercury.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Mercury.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {
+	      tooltipPos: { top: 2, left: 10 }
+	    };
 	  }
 
 	  _createClass(Mercury, [{
@@ -27206,9 +27239,28 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
+	      var tooltipPos = { top: 2, left: 10 };
 	      return _react2['default'].createElement(
 	        RoundStyle,
-	        { onClick: this.onClick.bind(this) },
+	        {
+	          onClick: this.onClick.bind(this),
+	          onMouseOver: function (e) {
+	            var offsetTop = 30;
+	            var offsetLeft = 10;
+
+	            var _e$target$getBoundingClientRect = e.target.getBoundingClientRect();
+
+	            var top = _e$target$getBoundingClientRect.top;
+	            var left = _e$target$getBoundingClientRect.left;
+
+	            _this2.setState({
+	              tooltipPos: { left: e.clientX - left + offsetLeft, top: e.clientY - top - offsetTop }
+	            });
+	          },
+	          toolPos: this.state.tooltipPos
+	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Меркурий' }),
 	        _react2['default'].createElement(MercuryStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
 	      );
@@ -27235,7 +27287,7 @@
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  top:0;\n  cursor: pointer;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 190px;\n  height: 190px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -16%;\n    left: 31%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 200px;\n    height: 200px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  top:0;\n  cursor: pointer;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 190px;\n  height: 190px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -16%;\n    left: 31%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 200px;\n    height: 200px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
+	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  top:0;\n  cursor: pointer;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 190px;\n  height: 190px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 200px;\n    height: 200px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  top:0;\n  cursor: pointer;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 190px;\n  height: 190px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 200px;\n    height: 200px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
 	    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  background: linear-gradient(to bottom, #F6DDBB, lightblue);\n  width:16px;\n  height:16px;\n  top: 24%;\n  left: 0%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #F6DDBB;\n  transform: rotate(360deg);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 32px;\n    height: 32px;\n  }\n'], ['\n  position: absolute;\n  background: linear-gradient(to bottom, #F6DDBB, lightblue);\n  width:16px;\n  height:16px;\n  top: 24%;\n  left: 0%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #F6DDBB;\n  transform: rotate(360deg);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 32px;\n    height: 32px;\n  }\n']);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -27258,16 +27310,22 @@
 
 	var _TooltipJs2 = _interopRequireDefault(_TooltipJs);
 
-	var RoundStyle = _styledComponents2['default'].div(_templateObject, _TooltipJs.tooltipStyle);
+	var RoundStyle = _styledComponents2['default'].div(_templateObject, function (props) {
+	  return (0, _TooltipJs.tooltipStyle)(props.toolPos);
+	});
 	var VenusStyle = _styledComponents2['default'].div(_templateObject2);
 
 	var Venus = (function (_React$Component) {
 	  _inherits(Venus, _React$Component);
 
-	  function Venus() {
+	  function Venus(props) {
 	    _classCallCheck(this, Venus);
 
-	    _get(Object.getPrototypeOf(Venus.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Venus.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {
+	      tooltipPos: { top: 2, left: 10 }
+	    };
 	  }
 
 	  _createClass(Venus, [{
@@ -27317,9 +27375,27 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2['default'].createElement(
 	        RoundStyle,
-	        { onClick: this.onClick.bind(this) },
+	        {
+	          onClick: this.onClick.bind(this),
+	          onMouseOver: function (e) {
+	            var offsetTop = 40;
+	            var offsetLeft = 0;
+
+	            var _e$target$getBoundingClientRect = e.target.getBoundingClientRect();
+
+	            var top = _e$target$getBoundingClientRect.top;
+	            var left = _e$target$getBoundingClientRect.left;
+
+	            _this2.setState({
+	              tooltipPos: { left: e.clientX - left + offsetLeft, top: e.clientY - top - offsetTop }
+	            });
+	          },
+	          toolPos: this.state.tooltipPos
+	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Венера' }),
 	        _react2['default'].createElement(VenusStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
 	      );
@@ -27346,7 +27422,7 @@
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 250px;\n  height: 250px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -10%;\n    left: 36%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 300px;\n    height: 300px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 250px;\n  height: 250px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -10%;\n    left: 36%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 300px;\n    height: 300px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
+	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 250px;\n  height: 250px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 300px;\n    height: 300px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 250px;\n  height: 250px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 300px;\n    height: 300px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
 	    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  background: linear-gradient(to bottom, deepskyblue, lightblue);\n  width:16px;\n  height:16px;\n  top: 96%;\n  left: 40%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #5F61F9;\n  border-radius: 19px;\n  -webkit-border-radius: 19px;\n  -moz-border-radius: 19px;\n  animation: rotate ', 's infinite linear;\n  @keyframes rotate {\n    0% {\n      transform: rotate(0deg);\n    }\n    100% {\n      transform: rotate(-360deg);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    width: 32px;\n    height: 32px;\n  }\n'], ['\n  position: absolute;\n  background: linear-gradient(to bottom, deepskyblue, lightblue);\n  width:16px;\n  height:16px;\n  top: 96%;\n  left: 40%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #5F61F9;\n  border-radius: 19px;\n  -webkit-border-radius: 19px;\n  -moz-border-radius: 19px;\n  animation: rotate ', 's infinite linear;\n  @keyframes rotate {\n    0% {\n      transform: rotate(0deg);\n    }\n    100% {\n      transform: rotate(-360deg);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    width: 32px;\n    height: 32px;\n  }\n']),
 	    _templateObject3 = _taggedTemplateLiteral(['\n  position: absolute;\n  background: #fff;\n  width:5px;\n  height:5px;\n  top: -10%;\n  left: -26%;\n  opacity: 0.8;\n  box-shadow: 0px 0px 20px 1px #5F61F9;\n  cursor: pointer;\n  border-radius: 19px;\n  -webkit-border-radius: 19px;\n  -moz-border-radius: 19px;\n  @media screen and (max-device-width: 500px) {\n    width: 10px;\n    height: 10px;\n  }\n'], ['\n  position: absolute;\n  background: #fff;\n  width:5px;\n  height:5px;\n  top: -10%;\n  left: -26%;\n  opacity: 0.8;\n  box-shadow: 0px 0px 20px 1px #5F61F9;\n  cursor: pointer;\n  border-radius: 19px;\n  -webkit-border-radius: 19px;\n  -moz-border-radius: 19px;\n  @media screen and (max-device-width: 500px) {\n    width: 10px;\n    height: 10px;\n  }\n']);
 
@@ -27370,7 +27446,9 @@
 
 	var _TooltipJs2 = _interopRequireDefault(_TooltipJs);
 
-	var RoundStyle = _styledComponents2['default'].div(_templateObject, _TooltipJs.tooltipStyle);
+	var RoundStyle = _styledComponents2['default'].div(_templateObject, function (props) {
+	  return (0, _TooltipJs.tooltipStyle)(props.toolPos);
+	});
 	var EarthStyle = _styledComponents2['default'].div(_templateObject2, function (props) {
 	  return props.earthPeriod * 24 / 365000;
 	});
@@ -27379,10 +27457,14 @@
 	var Earth = (function (_React$Component) {
 	  _inherits(Earth, _React$Component);
 
-	  function Earth() {
+	  function Earth(props) {
 	    _classCallCheck(this, Earth);
 
-	    _get(Object.getPrototypeOf(Earth.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Earth.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {
+	      tooltipPos: { top: 2, left: 10 }
+	    };
 	  }
 
 	  _createClass(Earth, [{
@@ -27432,9 +27514,27 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2['default'].createElement(
 	        RoundStyle,
-	        { onClick: this.onClick.bind(this) },
+	        {
+	          onClick: this.onClick.bind(this),
+	          onMouseOver: function (e) {
+	            var offsetTop = 40;
+	            var offsetLeft = 0;
+
+	            var _e$target$getBoundingClientRect = e.target.getBoundingClientRect();
+
+	            var top = _e$target$getBoundingClientRect.top;
+	            var left = _e$target$getBoundingClientRect.left;
+
+	            _this2.setState({
+	              tooltipPos: { left: e.clientX - left + offsetLeft, top: e.clientY - top - offsetTop }
+	            });
+	          },
+	          toolPos: this.state.tooltipPos
+	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Земля' }),
 	        _react2['default'].createElement(
 	          EarthStyle,
@@ -27465,7 +27565,7 @@
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 310px;\n  height: 310px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -8%;\n    left: 40%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 400px;\n    height: 400px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 310px;\n  height: 310px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -8%;\n    left: 40%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 400px;\n    height: 400px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
+	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 300px;\n  height: 300px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 400px;\n    height: 400px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 300px;\n  height: 300px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 400px;\n    height: 400px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
 	    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  background: linear-gradient(to bottom, firebrick, orangered);\n  width:13px;\n  height:13px;\n  left: 90%;\n  top: 20%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #AD0D10;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 26px;\n    height: 26px;\n  }\n'], ['\n  position: absolute;\n  background: linear-gradient(to bottom, firebrick, orangered);\n  width:13px;\n  height:13px;\n  left: 90%;\n  top: 20%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #AD0D10;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 26px;\n    height: 26px;\n  }\n']);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -27488,16 +27588,22 @@
 
 	var _TooltipJs2 = _interopRequireDefault(_TooltipJs);
 
-	var RoundStyle = _styledComponents2['default'].div(_templateObject, _TooltipJs.tooltipStyle);
+	var RoundStyle = _styledComponents2['default'].div(_templateObject, function (props) {
+	  return (0, _TooltipJs.tooltipStyle)(props.toolPos);
+	});
 	var MarsStyle = _styledComponents2['default'].div(_templateObject2);
 
 	var Mars = (function (_React$Component) {
 	  _inherits(Mars, _React$Component);
 
-	  function Mars() {
+	  function Mars(props) {
 	    _classCallCheck(this, Mars);
 
-	    _get(Object.getPrototypeOf(Mars.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Mars.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {
+	      tooltipPos: { top: 2, left: 10 }
+	    };
 	  }
 
 	  _createClass(Mars, [{
@@ -27547,9 +27653,27 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2['default'].createElement(
 	        RoundStyle,
-	        { onClick: this.onClick.bind(this) },
+	        {
+	          onClick: this.onClick.bind(this),
+	          onMouseOver: function (e) {
+	            var offsetTop = 40;
+	            var offsetLeft = 0;
+
+	            var _e$target$getBoundingClientRect = e.target.getBoundingClientRect();
+
+	            var top = _e$target$getBoundingClientRect.top;
+	            var left = _e$target$getBoundingClientRect.left;
+
+	            _this2.setState({
+	              tooltipPos: { left: e.clientX - left + offsetLeft, top: e.clientY - top - offsetTop }
+	            });
+	          },
+	          toolPos: this.state.tooltipPos
+	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Марс' }),
 	        _react2['default'].createElement(MarsStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
 	      );
@@ -27576,7 +27700,7 @@
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 350px;\n  height: 350px;\n  ', '\n  &:hover .tooltip {\n    top: -5%;\n    left: 41%;\n    width: 70px;\n  }\n  >img {\n    animation: rotate 20s infinite linear;\n    @keyframes rotate {\n      0% {\n        transform: rotate(0deg);\n      }\n      100% {\n        transform: rotate(-360deg);\n      }\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    top: -7%;\n    left: -12%;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n    >img {\n      width: 470px;\n      height: 470px;\n      animation: rotate 20s infinite linear;\n      @keyframes rotate {\n        0% {\n          transform: rotate(0deg);\n        }\n        100% {\n          transform: rotate(-360deg);\n        }\n      }\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 350px;\n  height: 350px;\n  ', '\n  &:hover .tooltip {\n    top: -5%;\n    left: 41%;\n    width: 70px;\n  }\n  >img {\n    animation: rotate 20s infinite linear;\n    @keyframes rotate {\n      0% {\n        transform: rotate(0deg);\n      }\n      100% {\n        transform: rotate(-360deg);\n      }\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    top: -7%;\n    left: -12%;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n    >img {\n      width: 470px;\n      height: 470px;\n      animation: rotate 20s infinite linear;\n      @keyframes rotate {\n        0% {\n          transform: rotate(0deg);\n        }\n        100% {\n          transform: rotate(-360deg);\n        }\n      }\n    }\n  }\n']);
+	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 330px;\n  height: 330px;\n\n  &:hover .tooltip {\n    top: -5%;\n    left: 41%;\n    width: 70px;\n  }\n  >img {\n    ', '\n    animation: rotate 20s infinite linear;\n    width: 100%;\n    @keyframes rotate {\n      0% {\n        transform: rotate(0deg);\n      }\n      100% {\n        transform: rotate(-360deg);\n      }\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    top: -7%;\n    left: -12%;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n    >img {\n      width: 470px;\n      height: 470px;\n      animation: rotate 20s infinite linear;\n      @keyframes rotate {\n        0% {\n          transform: rotate(0deg);\n        }\n        100% {\n          transform: rotate(-360deg);\n        }\n      }\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 330px;\n  height: 330px;\n\n  &:hover .tooltip {\n    top: -5%;\n    left: 41%;\n    width: 70px;\n  }\n  >img {\n    ', '\n    animation: rotate 20s infinite linear;\n    width: 100%;\n    @keyframes rotate {\n      0% {\n        transform: rotate(0deg);\n      }\n      100% {\n        transform: rotate(-360deg);\n      }\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    top: -7%;\n    left: -12%;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n    >img {\n      width: 470px;\n      height: 470px;\n      animation: rotate 20s infinite linear;\n      @keyframes rotate {\n        0% {\n          transform: rotate(0deg);\n        }\n        100% {\n          transform: rotate(-360deg);\n        }\n      }\n    }\n  }\n']);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -27654,8 +27778,8 @@
 	      return _react2['default'].createElement(
 	        RoundStyle,
 	        { onClick: this.onClick.bind(this) },
-	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Пояс астероидов' }),
-	        _react2['default'].createElement('img', { src: './img/asteroids.png', alt: '' })
+	        _react2['default'].createElement('img', { src: './img/asteroids.png', alt: '' }),
+	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Пояс астероидов' })
 	      );
 	    }
 	  }]);
@@ -27680,7 +27804,7 @@
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 370px;\n  height: 370px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -6%;\n    left: 41%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 500px;\n    height: 500px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 370px;\n  height: 370px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -6%;\n    left: 41%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 500px;\n    height: 500px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
+	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 370px;\n  height: 370px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 500px;\n    height: 500px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 370px;\n  height: 370px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 500px;\n    height: 500px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
 	    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  background: linear-gradient(to bottom, #CD853F, #FDC8C9, #CD853F, #FDC8C9, #CD853F, #FDC8C9);\n  width:25px;\n  height:25px;\n  left: 6%;\n  top: 75%;\n  opacity: 1;\n  z-index: 1;\n  box-shadow: 0px 0px 20px 1px #F4D6D6;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 48px;\n    height: 48px;\n  }\n'], ['\n  position: absolute;\n  background: linear-gradient(to bottom, #CD853F, #FDC8C9, #CD853F, #FDC8C9, #CD853F, #FDC8C9);\n  width:25px;\n  height:25px;\n  left: 6%;\n  top: 75%;\n  opacity: 1;\n  z-index: 1;\n  box-shadow: 0px 0px 20px 1px #F4D6D6;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 48px;\n    height: 48px;\n  }\n']);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -27703,16 +27827,22 @@
 
 	var _TooltipJs2 = _interopRequireDefault(_TooltipJs);
 
-	var RoundStyle = _styledComponents2['default'].div(_templateObject, _TooltipJs.tooltipStyle);
+	var RoundStyle = _styledComponents2['default'].div(_templateObject, function (props) {
+	  return (0, _TooltipJs.tooltipStyle)(props.toolPos);
+	});
 	var JupiterStyle = _styledComponents2['default'].div(_templateObject2);
 
 	var Jupiter = (function (_React$Component) {
 	  _inherits(Jupiter, _React$Component);
 
-	  function Jupiter() {
+	  function Jupiter(props) {
 	    _classCallCheck(this, Jupiter);
 
-	    _get(Object.getPrototypeOf(Jupiter.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Jupiter.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {
+	      tooltipPos: { top: 2, left: 10 }
+	    };
 	  }
 
 	  _createClass(Jupiter, [{
@@ -27762,9 +27892,27 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2['default'].createElement(
 	        RoundStyle,
-	        { onClick: this.onClick.bind(this) },
+	        {
+	          onClick: this.onClick.bind(this),
+	          onMouseOver: function (e) {
+	            var offsetTop = 40;
+	            var offsetLeft = 5;
+
+	            var _e$target$getBoundingClientRect = e.target.getBoundingClientRect();
+
+	            var top = _e$target$getBoundingClientRect.top;
+	            var left = _e$target$getBoundingClientRect.left;
+
+	            _this2.setState({
+	              tooltipPos: { left: e.clientX - left + offsetLeft, top: e.clientY - top - offsetTop }
+	            });
+	          },
+	          toolPos: this.state.tooltipPos
+	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Юпитер' }),
 	        _react2['default'].createElement(JupiterStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
 	      );
@@ -27791,7 +27939,7 @@
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 430px;\n  height: 430px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -6%;\n    left: 43%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 600px;\n    height: 600px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 430px;\n  height: 430px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -6%;\n    left: 43%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 600px;\n    height: 600px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
+	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 430px;\n  height: 430px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 600px;\n    height: 600px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 430px;\n  height: 430px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 600px;\n    height: 600px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
 	    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  background: url(./img/Saturn.png);\n  width:24px;\n  height:24px;\n  opacity: 1;\n  z-index: 1;\n  top: 11%;\n  left: 14%;\n  box-shadow: 0px 0px 5px 4px #866a1c;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  animation: rotate 2s infinite linear;\n  @keyframes rotate {\n    0% {\n      transform: rotate(0deg);\n    }\n    100% {\n      transform: rotate(-360deg);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    width: 45px;\n    height: 45px;\n    background-size: cover;\n  }\n'], ['\n  position: absolute;\n  background: url(./img/Saturn.png);\n  width:24px;\n  height:24px;\n  opacity: 1;\n  z-index: 1;\n  top: 11%;\n  left: 14%;\n  box-shadow: 0px 0px 5px 4px #866a1c;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  animation: rotate 2s infinite linear;\n  @keyframes rotate {\n    0% {\n      transform: rotate(0deg);\n    }\n    100% {\n      transform: rotate(-360deg);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    width: 45px;\n    height: 45px;\n    background-size: cover;\n  }\n']);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -27814,16 +27962,22 @@
 
 	var _TooltipJs2 = _interopRequireDefault(_TooltipJs);
 
-	var RoundStyle = _styledComponents2['default'].div(_templateObject, _TooltipJs.tooltipStyle);
+	var RoundStyle = _styledComponents2['default'].div(_templateObject, function (props) {
+	  return (0, _TooltipJs.tooltipStyle)(props.toolPos);
+	});
 	var SaturnStyle = _styledComponents2['default'].div(_templateObject2);
 
 	var Saturn = (function (_React$Component) {
 	  _inherits(Saturn, _React$Component);
 
-	  function Saturn() {
+	  function Saturn(props) {
 	    _classCallCheck(this, Saturn);
 
-	    _get(Object.getPrototypeOf(Saturn.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Saturn.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {
+	      tooltipPos: { top: 2, left: 10 }
+	    };
 	  }
 
 	  _createClass(Saturn, [{
@@ -27873,9 +28027,27 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2['default'].createElement(
 	        RoundStyle,
-	        { onClick: this.onClick.bind(this) },
+	        {
+	          onClick: this.onClick.bind(this),
+	          onMouseOver: function (e) {
+	            var offsetTop = 40;
+	            var offsetLeft = 5;
+
+	            var _e$target$getBoundingClientRect = e.target.getBoundingClientRect();
+
+	            var top = _e$target$getBoundingClientRect.top;
+	            var left = _e$target$getBoundingClientRect.left;
+
+	            _this2.setState({
+	              tooltipPos: { left: e.clientX - left + offsetLeft, top: e.clientY - top - offsetTop }
+	            });
+	          },
+	          toolPos: this.state.tooltipPos
+	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Сатурн' }),
 	        _react2['default'].createElement(SaturnStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
 	      );
@@ -27902,7 +28074,7 @@
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 490px;\n  height: 490px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -5%;\n    left: 43%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    width: 700px;\n    height: 700px;\n    border: 3px dotted rgba(255,255,255, 0.4);\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 490px;\n  height: 490px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -5%;\n    left: 43%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    width: 700px;\n    height: 700px;\n    border: 3px dotted rgba(255,255,255, 0.4);\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
+	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 490px;\n  height: 490px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    width: 700px;\n    height: 700px;\n    border: 3px dotted rgba(255,255,255, 0.4);\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 490px;\n  height: 490px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    width: 700px;\n    height: 700px;\n    border: 3px dotted rgba(255,255,255, 0.4);\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
 	    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  background: linear-gradient(to bottom, lightblue, white);\n  width:21px;\n  height:21px;\n  top: 84%;\n  left: 83%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #F4D6D6;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 41px;\n    height: 41px;\n  }\n'], ['\n  position: absolute;\n  background: linear-gradient(to bottom, lightblue, white);\n  width:21px;\n  height:21px;\n  top: 84%;\n  left: 83%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #F4D6D6;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 41px;\n    height: 41px;\n  }\n']);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -27925,16 +28097,22 @@
 
 	var _TooltipJs2 = _interopRequireDefault(_TooltipJs);
 
-	var RoundStyle = _styledComponents2['default'].div(_templateObject, _TooltipJs.tooltipStyle);
+	var RoundStyle = _styledComponents2['default'].div(_templateObject, function (props) {
+	  return (0, _TooltipJs.tooltipStyle)(props.toolPos);
+	});
 	var UranusStyle = _styledComponents2['default'].div(_templateObject2);
 
 	var Uranus = (function (_React$Component) {
 	  _inherits(Uranus, _React$Component);
 
-	  function Uranus() {
+	  function Uranus(props) {
 	    _classCallCheck(this, Uranus);
 
-	    _get(Object.getPrototypeOf(Uranus.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Uranus.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {
+	      tooltipPos: { top: 2, left: 10 }
+	    };
 	  }
 
 	  _createClass(Uranus, [{
@@ -27986,9 +28164,27 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2['default'].createElement(
 	        RoundStyle,
-	        { onClick: this.onClick.bind(this) },
+	        {
+	          onClick: this.onClick.bind(this),
+	          onMouseOver: function (e) {
+	            var offsetTop = 40;
+	            var offsetLeft = 0;
+
+	            var _e$target$getBoundingClientRect = e.target.getBoundingClientRect();
+
+	            var top = _e$target$getBoundingClientRect.top;
+	            var left = _e$target$getBoundingClientRect.left;
+
+	            _this2.setState({
+	              tooltipPos: { left: e.clientX - left + offsetLeft, top: e.clientY - top - offsetTop }
+	            });
+	          },
+	          toolPos: this.state.tooltipPos
+	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Уран' }),
 	        _react2['default'].createElement(UranusStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
 	      );
@@ -28015,7 +28211,7 @@
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 550px;\n  height: 550px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -5%;\n    left: 44%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 800px;\n    height: 800px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 550px;\n  height: 550px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -5%;\n    left: 44%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 800px;\n    height: 800px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
+	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 570px;\n  height: 570px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 800px;\n    height: 800px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 570px;\n  height: 570px;\n  border: 2px dotted rgba(255,255,255, 0.1);\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 800px;\n    height: 800px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
 	    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  background: linear-gradient(to bottom, blue, CornflowerBlue, blue, CornflowerBlue);\n  width:20px;\n  height:20px;\n  left: 98%;\n  top: 56%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #F4D6D6;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 40px;\n    height: 40px;\n  }\n'], ['\n  position: absolute;\n  background: linear-gradient(to bottom, blue, CornflowerBlue, blue, CornflowerBlue);\n  width:20px;\n  height:20px;\n  left: 98%;\n  top: 56%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #F4D6D6;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 40px;\n    height: 40px;\n  }\n']);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -28038,16 +28234,22 @@
 
 	var _TooltipJs2 = _interopRequireDefault(_TooltipJs);
 
-	var RoundStyle = _styledComponents2['default'].div(_templateObject, _TooltipJs.tooltipStyle);
+	var RoundStyle = _styledComponents2['default'].div(_templateObject, function (props) {
+	  return (0, _TooltipJs.tooltipStyle)(props.toolPos);
+	});
 	var NeptuneStyle = _styledComponents2['default'].div(_templateObject2);
 
 	var Neptune = (function (_React$Component) {
 	  _inherits(Neptune, _React$Component);
 
-	  function Neptune() {
+	  function Neptune(props) {
 	    _classCallCheck(this, Neptune);
 
-	    _get(Object.getPrototypeOf(Neptune.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Neptune.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {
+	      tooltipPos: { top: 2, left: 10 }
+	    };
 	  }
 
 	  _createClass(Neptune, [{
@@ -28098,9 +28300,27 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2['default'].createElement(
 	        RoundStyle,
-	        { onClick: this.onClick.bind(this) },
+	        {
+	          onClick: this.onClick.bind(this),
+	          onMouseOver: function (e) {
+	            var offsetTop = 50;
+	            var offsetLeft = 0;
+
+	            var _e$target$getBoundingClientRect = e.target.getBoundingClientRect();
+
+	            var top = _e$target$getBoundingClientRect.top;
+	            var left = _e$target$getBoundingClientRect.left;
+
+	            _this2.setState({
+	              tooltipPos: { left: e.clientX - left + offsetLeft, top: e.clientY - top - offsetTop }
+	            });
+	          },
+	          toolPos: this.state.tooltipPos
+	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Нептун' }),
 	        _react2['default'].createElement(NeptuneStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
 	      );
@@ -28127,7 +28347,7 @@
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 610px;\n  height: 610px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -4%;\n    left: 45%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 900px;\n    height: 900px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 610px;\n  height: 610px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  ', '\n  &:hover .tooltip {\n    top: -4%;\n    left: 45%;\n  }\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 900px;\n    height: 900px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
+	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 640px;\n  height: 640px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 900px;\n    height: 900px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 640px;\n  height: 640px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 900px;\n    height: 900px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
 	    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  background: linear-gradient(to bottom, brown, lightyellow);\n  width:13px;\n  height:13px;\n  top: 94%;\n  left: 70%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #F4D6D6;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 26px;\n    height: 26px;\n  }\n'], ['\n  position: absolute;\n  background: linear-gradient(to bottom, brown, lightyellow);\n  width:13px;\n  height:13px;\n  top: 94%;\n  left: 70%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #F4D6D6;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 26px;\n    height: 26px;\n  }\n']);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -28150,16 +28370,22 @@
 
 	var _TooltipJs2 = _interopRequireDefault(_TooltipJs);
 
-	var RoundStyle = _styledComponents2['default'].div(_templateObject, _TooltipJs.tooltipStyle);
+	var RoundStyle = _styledComponents2['default'].div(_templateObject, function (props) {
+	  return (0, _TooltipJs.tooltipStyle)(props.toolPos);
+	});
 	var PlutoStyle = _styledComponents2['default'].div(_templateObject2);
 
 	var Pluto = (function (_React$Component) {
 	  _inherits(Pluto, _React$Component);
 
-	  function Pluto() {
+	  function Pluto(props) {
 	    _classCallCheck(this, Pluto);
 
-	    _get(Object.getPrototypeOf(Pluto.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Pluto.prototype), 'constructor', this).call(this, props);
+
+	    this.state = {
+	      tooltipPos: { top: 2, left: 10 }
+	    };
 	  }
 
 	  _createClass(Pluto, [{
@@ -28209,9 +28435,27 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2['default'].createElement(
 	        RoundStyle,
-	        { onClick: this.onClick.bind(this) },
+	        {
+	          onClick: this.onClick.bind(this),
+	          onMouseOver: function (e) {
+	            var offsetTop = 50;
+	            var offsetLeft = 0;
+
+	            var _e$target$getBoundingClientRect = e.target.getBoundingClientRect();
+
+	            var top = _e$target$getBoundingClientRect.top;
+	            var left = _e$target$getBoundingClientRect.left;
+
+	            _this2.setState({
+	              tooltipPos: { left: e.clientX - left + offsetLeft, top: e.clientY - top - offsetTop }
+	            });
+	          },
+	          toolPos: this.state.tooltipPos
+	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Плутон' }),
 	        _react2['default'].createElement(PlutoStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
 	      );
