@@ -27262,7 +27262,12 @@
 	          toolPos: this.state.tooltipPos
 	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Меркурий' }),
-	        _react2['default'].createElement(MercuryStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
+	        _react2['default'].createElement(MercuryStyle, {
+	          style: { top: this.state.top + '%', left: this.state.left + '%' },
+	          onMouseOver: function (e) {
+	            return e.stopPropagation();
+	          }
+	        })
 	      );
 	    }
 	  }]);
@@ -27397,7 +27402,12 @@
 	          toolPos: this.state.tooltipPos
 	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Венера' }),
-	        _react2['default'].createElement(VenusStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
+	        _react2['default'].createElement(VenusStyle, {
+	          style: { top: this.state.top + '%', left: this.state.left + '%' },
+	          onMouseOver: function (e) {
+	            return e.stopPropagation();
+	          }
+	        })
 	      );
 	    }
 	  }]);
@@ -27538,7 +27548,13 @@
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Земля' }),
 	        _react2['default'].createElement(
 	          EarthStyle,
-	          { style: { top: this.state.top + '%', left: this.state.left + '%' }, earthPeriod: this.props.earthPeriod },
+	          {
+	            style: { top: this.state.top + '%', left: this.state.left + '%' },
+	            earthPeriod: this.props.earthPeriod,
+	            onMouseOver: function (e) {
+	              return e.stopPropagation();
+	            }
+	          },
 	          _react2['default'].createElement(MoonStyle, null)
 	        )
 	      );
@@ -27675,7 +27691,12 @@
 	          toolPos: this.state.tooltipPos
 	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Марс' }),
-	        _react2['default'].createElement(MarsStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
+	        _react2['default'].createElement(MarsStyle, {
+	          style: { top: this.state.top + '%', left: this.state.left + '%' },
+	          onMouseOver: function (e) {
+	            return e.stopPropagation();
+	          }
+	        })
 	      );
 	    }
 	  }]);
@@ -27914,7 +27935,12 @@
 	          toolPos: this.state.tooltipPos
 	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Юпитер' }),
-	        _react2['default'].createElement(JupiterStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
+	        _react2['default'].createElement(JupiterStyle, {
+	          style: { top: this.state.top + '%', left: this.state.left + '%' },
+	          onMouseOver: function (e) {
+	            return e.stopPropagation();
+	          }
+	        })
 	      );
 	    }
 	  }]);
@@ -28049,7 +28075,12 @@
 	          toolPos: this.state.tooltipPos
 	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Сатурн' }),
-	        _react2['default'].createElement(SaturnStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
+	        _react2['default'].createElement(SaturnStyle, {
+	          style: { top: this.state.top + '%', left: this.state.left + '%' },
+	          onMouseOver: function (e) {
+	            return e.stopPropagation();
+	          }
+	        })
 	      );
 	    }
 	  }]);
@@ -28186,7 +28217,12 @@
 	          toolPos: this.state.tooltipPos
 	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Уран' }),
-	        _react2['default'].createElement(UranusStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
+	        _react2['default'].createElement(UranusStyle, {
+	          style: { top: this.state.top + '%', left: this.state.left + '%' },
+	          onMouseOver: function (e) {
+	            return e.stopPropagation();
+	          }
+	        })
 	      );
 	    }
 	  }]);
@@ -28322,7 +28358,12 @@
 	          toolPos: this.state.tooltipPos
 	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Нептун' }),
-	        _react2['default'].createElement(NeptuneStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
+	        _react2['default'].createElement(NeptuneStyle, {
+	          style: { top: this.state.top + '%', left: this.state.left + '%' },
+	          onMouseOver: function (e) {
+	            return e.stopPropagation();
+	          }
+	        })
 	      );
 	    }
 	  }]);
@@ -28348,7 +28389,7 @@
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 	var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 640px;\n  height: 640px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 900px;\n    height: 900px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n'], ['\n  position: absolute;\n  cursor: pointer;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  margin: auto;\n  width: 640px;\n  height: 640px;\n  border: 2px dotted rgba(255,255,255, 0.2);\n  border-radius: 50%;\n  ', ';\n  &:hover {\n    border: 2px dotted rgba(255,255,255, 0.5);\n    @media screen and (max-device-width: 500px) {\n      border: 3px dotted rgba(255,255,255, 0.7);\n    }\n  }\n  @media screen and (max-device-width: 500px) {\n    border: 3px dotted rgba(255,255,255, 0.4);\n    width: 900px;\n    height: 900px;\n    .tooltip, &:hover .tooltip {\n      display: none;\n    }\n  }\n']),
-	    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  background: linear-gradient(to bottom, brown, lightyellow);\n  width:13px;\n  height:13px;\n  top: 94%;\n  left: 70%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #F4D6D6;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 26px;\n    height: 26px;\n  }\n'], ['\n  position: absolute;\n  background: linear-gradient(to bottom, brown, lightyellow);\n  width:13px;\n  height:13px;\n  top: 94%;\n  left: 70%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #F4D6D6;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 26px;\n    height: 26px;\n  }\n']);
+	    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  background: linear-gradient(to bottom, brown, lightyellow);\n  width:13px;\n  height:13px;\n  top: 94%;\n  left: 70%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #F4D6D6;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 26px;\n    height: 26px;\n  }\n  z-index: 9999;\n'], ['\n  position: absolute;\n  background: linear-gradient(to bottom, brown, lightyellow);\n  width:13px;\n  height:13px;\n  top: 94%;\n  left: 70%;\n  opacity: 1;\n  box-shadow: 0px 0px 20px 1px #F4D6D6;\n  border-radius: 50%;\n  -webkit-border-radius: 50%;\n  -moz-border-radius: 50%;\n  @media screen and (max-device-width: 500px) {\n    width: 26px;\n    height: 26px;\n  }\n  z-index: 9999;\n']);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -28433,6 +28474,13 @@
 	      this.props.cb(12);
 	    }
 	  }, {
+	    key: 'stopHover',
+	    value: function stopHover(e) {
+	      e.stopPropagation();
+	      console.log('msg');
+	      return false;
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
@@ -28457,7 +28505,12 @@
 	          toolPos: this.state.tooltipPos
 	        },
 	        _react2['default'].createElement(_TooltipJs2['default'], { text: 'Плутон' }),
-	        _react2['default'].createElement(PlutoStyle, { style: { top: this.state.top + '%', left: this.state.left + '%' } })
+	        _react2['default'].createElement(PlutoStyle, {
+	          style: { top: this.state.top + '%', left: this.state.left + '%' },
+	          onMouseOver: function (e) {
+	            return e.stopPropagation();
+	          }
+	        })
 	      );
 	    }
 	  }]);
